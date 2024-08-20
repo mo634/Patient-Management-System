@@ -67,3 +67,8 @@
     @apply bg-background text-foreground;
   }
 }
+@layer utilities{
+  .input-style{
+    @apply  placeholder:text-dark-600 bg-dark-400 h-11 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+  }
+}
