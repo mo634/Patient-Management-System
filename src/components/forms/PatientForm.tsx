@@ -8,26 +8,27 @@ import { Form } from "@/components/ui/form"
 import CustomInput from "./CustomInput"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
+import { UserFormValidation } from "@/lib/validation"
 
 
-const formSchema = z.object({
-    username: z.string().min(2).max(50),
-})
+
 export enum FormFieldType {
     INPUT = "input",
     CHECKBOX = "checkbox",
     PHONE = "phone"
 }
 const PatientForm = () => {
-const [isLoading ,setIsLoading]=useState(false)
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const [isLoading, setIsLoading] = useState(false)
+    const form = useForm<z.infer<typeof UserFormValidation>>({
+        resolver: zodResolver(UserFormValidation),
         defaultValues: {
-            username: "",
+            name: "",
+            email: "",
+            phone: "",
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    function onSubmit(values: z.infer<typeof UserFormValidation>) {
         console.log(values)
     }
 
@@ -64,7 +65,7 @@ const [isLoading ,setIsLoading]=useState(false)
                     />
 
                     <SubmitButton
-                    isLoading={isLoading}
+                        isLoading={isLoading}
                     >
                         Get Started
                     </SubmitButton>
