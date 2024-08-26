@@ -9,8 +9,8 @@ const Home = () => {
     <section className="h-screen flex justify-between w-full">
       {/*start  left side  */}
       <div className="flex-1">
-        <div className=" flex justify-center items-center  h-full">
-          <div className=" flex flex-col">
+        <div className=" flex justify-center items-center  h-full flex-1">
+          <div className=" flex flex-col w-[60%]">
             <Image
               alt="logo"
               height={32}
