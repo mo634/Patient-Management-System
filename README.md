@@ -53,11 +53,11 @@ To install and run this Next.js project locally, follow these steps:
 1. Clone the repository:
    ```bash
    [git clone https://github.com/yourusername/your-repo-name.git](https://github.com/mo634/Patient-Management-System.git)
-#Navigate to the project directory:
+<h2> Navigate to the project directory: </h2>
 cd your-repo-name/my-app
-#Install dependencies:
+<h2>Install dependencies:</h2>h2>
 npm install
 
-#Start the development server:
+<h2>Start the development server:</h2>h2>
 npm run dev
-#Open your browser and go to http://localhost:3000 to view the app.
+<h2>Open your browser and go to http://localhost:3000 to view the app.</h2>
