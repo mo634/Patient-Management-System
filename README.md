@@ -1,4 +1,5 @@
-# Project Title
+# Patient-Management-System
+
 
 ![Project Banner](https://github.com/mo634/Patient-Management-System/blob/main/onboarding.png)
 
