@@ -40,18 +40,24 @@
 
 ## Tech Stack
 
-- **Frontend:** [e.g., React, Next.js, Tailwind CSS]
-- **Backend:** [e.g., Node.js, Express.js]
-- **Database:** [e.g., MongoDB, PostgreSQL]
-- **Version Control:** [e.g., Git, GitHub]
-- **Other Technologies:** [e.g., Docker, CI/CD pipelines, etc.]
+- **Frontend:** [React, Next.js, Tailwind CSS,Shadcn/ui]
+- **Backend:** [Appwrite]
+
 
 ---
 
 ## Installation
 
-To install and run this project locally, follow these steps:
+To install and run this Next.js project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   [git clone https://github.com/yourusername/your-repo-name.git](https://github.com/mo634/Patient-Management-System.git)
+#Navigate to the project directory:
+cd your-repo-name/my-app
+#Install dependencies:
+npm install
+
+#Start the development server:
+npm run dev
+#Open your browser and go to http://localhost:3000 to view the app.
