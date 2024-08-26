@@ -4,16 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+import {Form} from "@/components/ui/form"
 import CustomInput from "./CustomInput"
 const formSchema = z.object({
     username: z.string().min(2).max(50),
@@ -38,6 +29,7 @@ const PatientForm = () => {
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                
                 <CustomInput control={form.control}
                     fieldType={FormFieldType.INPUT}
                     name={"username"}
@@ -45,6 +37,15 @@ const PatientForm = () => {
                     placeholder="Enter your username"
                     iconSrc="/assets/icons/user.svg"
                     iconAlt="user"
+                />
+
+                <CustomInput control={form.control}
+                    fieldType={FormFieldType.INPUT}
+                    name={"email"}
+                    label="Email"
+                    placeholder="Enter your Email"
+                    iconSrc="/assets/icons/email.svg"
+                    iconAlt="email"
                 />
 
                 <Button type="submit">Submit</Button>

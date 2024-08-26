@@ -23,27 +23,32 @@ interface CustomProps {
 }
 
 const CustomField = ({ field, props }: { field: any; props: CustomProps }) => {
-    return (
-        <div className=" flex rounded-md  border border-dark-500 bg-dark-400 ">
-            {
-                props.iconSrc && props.iconAlt &&
-                <Image
-                    src={props.iconSrc}
-                    alt={props.iconAlt}
-                    width={24}
-                    height={24}
-                />
-            }
+    switch (props.fieldType) {
+        case FormFieldType.INPUT:
+            return (
+                <div className=" flex rounded-md  border border-dark-500 bg-dark-400 ">
+                    {
+                        props.iconSrc && props.iconAlt &&
+                        <Image
+                            src={props.iconSrc}
+                            alt={props.iconAlt}
+                            width={24}
+                            height={24}
+                        />
+                    }
 
-            <FormControl>
-                <Input
-                    placeholder={props.placeholder}
-                    {...field}
-                    className='border-0 input-style'
-                />
-            </FormControl>
-        </div>
-    )
+                    <FormControl>
+                        <Input
+                            placeholder={props.placeholder}
+                            {...field}
+                            className='border-0 input-style'
+                        />
+                    </FormControl>
+                </div>
+            )
+        default:
+            return null
+    }
 }
 
 
