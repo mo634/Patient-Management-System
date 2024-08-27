@@ -32,7 +32,7 @@
 
 ## Features
 
-- [Feature 1]
+- full dynamic form with real time validation with help of (form component shadcn , zod for validation ,appwrite for handle submitting data )
 - [Feature 2]
 - [Feature 3]
 - [Feature 4]
