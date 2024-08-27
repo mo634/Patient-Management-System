@@ -3,14 +3,14 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import CustomInput from "./CustomInput"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
 import { UserFormValidation } from "@/lib/validation"
+import { createUser } from "@/lib/actions/patient.action"
 
-
+import { useRouter } from "next/navigation"
 
 export enum FormFieldType {
     INPUT = "input",
@@ -19,6 +19,9 @@ export enum FormFieldType {
 }
 const PatientForm = () => {
     const [isLoading, setIsLoading] = useState(false)
+
+    const router = useRouter()
+
     const form = useForm<z.infer<typeof UserFormValidation>>({
         resolver: zodResolver(UserFormValidation),
         defaultValues: {
@@ -28,8 +31,30 @@ const PatientForm = () => {
         },
     })
 
-    function onSubmit(values: z.infer<typeof UserFormValidation>) {
-        console.log(values)
+    const onSubmit = async ({ name, email, phone }: z.infer<typeof UserFormValidation>) => {
+        try {
+
+            console.log(name, email, phone)
+
+            setIsLoading(true)
+
+            const userData = { name, email, phone }
+
+            const newUser = await createUser(userData)
+
+            console.log(newUser)
+
+            if (newUser) {
+                router.push(`/patients/${newUser.$id}/register`)
+            }
+
+
+        } catch (error) {
+            console.log(error)
+        }
+        finally {
+            setIsLoading(false)
+        }
     }
 
     return (
@@ -39,7 +64,7 @@ const PatientForm = () => {
 
                     <CustomInput control={form.control}
                         fieldType={FormFieldType.INPUT}
-                        name={"username"}
+                        name={"name"}
                         label="Username"
                         placeholder="Enter your username"
                         iconSrc="/assets/icons/user.svg"
@@ -58,7 +83,6 @@ const PatientForm = () => {
                     <CustomInput
                         control={form.control}
                         fieldType={FormFieldType.PHONE}
-
                         name="phone"
                         label="Phone"
                         placeholder="(555) 123-4567"
@@ -69,6 +93,7 @@ const PatientForm = () => {
                     >
                         Get Started
                     </SubmitButton>
+
                 </form>
             </Form>
         </section>
