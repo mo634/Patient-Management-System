@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Patient-Management-System
 
-## Getting Started
 
-First, run the development server:
+![Project Banner](https://github.com/mo634/Patient-Management-System/blob/main/onboarding.png)
 
-```bash
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Lessons Learned](#lessons-learned)
+- [Challenges](#challenges)
+- [Future Enhancements](#future-enhancements)
+- [Contact](#contact)
+
+---
+
+## Overview
+
+**Project Name** is a [brief description of your project]. This project is designed to [state the purpose or the problem it solves].
+
+**Key Objectives:**
+- [Objective 1]
+- [Objective 2]
+- [Objective 3]
+
+[Optional: Add a demo link or a live website link]
+
+---
+
+## Features
+
+- [Feature 1]
+- [Feature 2]
+- [Feature 3]
+- [Feature 4]
+
+---
+
+## Tech Stack
+
+- **Frontend:** [React, Next.js, Tailwind CSS,Shadcn/ui]
+- **Backend:** [Appwrite]
+
+
+---
+
+## Installation
+
+To install and run this Next.js project locally, follow these steps:
+
+<h2>Clone the repository:</h2>
+   ```bash
+   [git clone https://github.com/yourusername/your-repo-name.git](https://github.com/mo634/Patient-Management-System.git)
+<h2> Navigate to the project directory: </h2>
+cd your-repo-name/my-app
+<h2>Install dependencies:</h2>
+npm install
+
+<h2>Start the development server:</h2>
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h2>Open your browser and go to http://localhost:3000 to view the app.</h2>
