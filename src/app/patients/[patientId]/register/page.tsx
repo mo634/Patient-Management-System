@@ -2,7 +2,7 @@
 
 const Registeration = () => {
     return (
-        <div>Registeration</div>
+        <div>welcom</div>
     )
 }
 
