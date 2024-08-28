@@ -15,7 +15,9 @@ import { useRouter } from "next/navigation"
 export enum FormFieldType {
     INPUT = "input",
     CHECKBOX = "checkbox",
-    PHONE = "phone"
+    PHONE = "phone",
+    DATE_PICKER = "datePicker",
+    SKELETON="skeleton"
 }
 const PatientForm = () => {
     const [isLoading, setIsLoading] = useState(false)

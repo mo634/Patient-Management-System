@@ -23,3 +23,16 @@ export const createUser = async (user:CreateUserParams) => {
     }
 
 }
+
+export const getUsers = async (id:string) => {
+    try {
+        const user =await  users.get(id)
+
+        
+
+        return parseStringify(user)
+    }
+    catch (error) {
+        console.error("An error occurred while fetching users:", error)
+    }
+}

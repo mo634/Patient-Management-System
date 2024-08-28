@@ -19,6 +19,7 @@ const Home = () => {
               className="mb-12"
             />
 
+
             <PatientForm />
             <div className="mt-10 flex gap-2 items-center">
 

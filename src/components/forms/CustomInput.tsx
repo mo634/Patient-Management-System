@@ -15,6 +15,8 @@ import { FormFieldType } from './PatientForm';
 import Image from 'next/image';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 interface CustomProps {
     control: Control<any>;
     name: string;
@@ -23,6 +25,8 @@ interface CustomProps {
     placeholder?: string;
     iconSrc?: string
     iconAlt?: string
+    showTimeSelect?: boolean
+    renderSkeleton ?:(field: any)=>React.ReactNode
 }
 
 const CustomField = ({ field, props }: { field: any; props: CustomProps }) => {
@@ -40,7 +44,9 @@ const CustomField = ({ field, props }: { field: any; props: CustomProps }) => {
                         />
                     }
 
-                    <FormControl>
+                    <FormControl
+                        className=' '
+                    >
                         <Input
                             placeholder={props.placeholder}
                             {...field}
@@ -66,6 +72,34 @@ const CustomField = ({ field, props }: { field: any; props: CustomProps }) => {
                     </FormControl >
                 </div>
             )
+        case FormFieldType.DATE_PICKER:
+            return (
+                <div className=" flex rounded-md   border border-dark-500 bg-dark-400">
+                    {
+                        props.iconSrc && props.iconAlt &&
+                        <Image
+                            src={props.iconSrc}
+                            alt={props.iconAlt}
+                            width={24}
+                            height={24}
+                            className='ml-2'
+                        />
+                    }
+                    <FormControl>
+                        <DatePicker
+                            showTimeSelect={props.showTimeSelect ?? false}
+                            selected={field.value}
+                            onChange={(date: Date | null) => field.onChange(date)}
+                            timeInputLabel="Time:"
+                            placeholderText={"MM/dd/yyyy"}
+                            dateFormat="MM/dd/yyyy h:mm aa"
+                            className=' p-2 placeholder:text-dark-600 w-full'
+                        />
+                    </FormControl>
+                </div>
+            )
+            case FormFieldType.SKELETON:
+                return props.renderSkeleton ? props.renderSkeleton(field): null
         default:
             return null
     }
