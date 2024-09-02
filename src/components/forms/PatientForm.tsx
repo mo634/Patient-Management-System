@@ -17,11 +17,13 @@ export enum FormFieldType {
     CHECKBOX = "checkbox",
     PHONE = "phone",
     DATE_PICKER = "datePicker",
-    SKELETON="skeleton"
+    SKELETON = "skeleton",
+    SELECT = "select"
 }
 const PatientForm = () => {
     const [isLoading, setIsLoading] = useState(false)
 
+    const [error, setError] = useState("")
     const router = useRouter()
 
     const form = useForm<z.infer<typeof UserFormValidation>>({
@@ -34,10 +36,12 @@ const PatientForm = () => {
     })
 
     const onSubmit = async ({ name, email, phone }: z.infer<typeof UserFormValidation>) => {
+
         try {
 
             console.log(name, email, phone)
 
+            setError("")
             setIsLoading(true)
 
             const userData = { name, email, phone }
@@ -46,12 +50,18 @@ const PatientForm = () => {
 
             console.log(newUser)
 
-            if (newUser) {
+            if (newUser.success !== false) {
                 router.push(`/patients/${newUser.$id}/register`)
+            }
+            if (!newUser.success) {
+
+                setError(newUser.error)
+
             }
 
 
         } catch (error) {
+
             console.log(error)
         }
         finally {
@@ -95,6 +105,8 @@ const PatientForm = () => {
                     >
                         Get Started
                     </SubmitButton>
+
+                    <p className="text-red-500 ">{error && error}</p>
 
                 </form>
             </Form>

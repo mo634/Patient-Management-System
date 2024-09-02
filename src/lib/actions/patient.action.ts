@@ -18,8 +18,14 @@ export const createUser = async (user:CreateUserParams) => {
 
         return parseStringify(newUser)
         
-    }catch (error) {
+    }catch (error:any) {
         console.error("An error occurred while creating a new user:",error)
+        if (error?.code === 409) {
+            return {
+                success: false,
+                error: "User already exists",
+            };
+        }
     }
 
 }
@@ -32,7 +38,8 @@ export const getUsers = async (id:string) => {
 
         return parseStringify(user)
     }
-    catch (error) {
+    catch (error:any) {
         console.error("An error occurred while fetching users:", error)
+        console.log(error?.code)
     }
 }

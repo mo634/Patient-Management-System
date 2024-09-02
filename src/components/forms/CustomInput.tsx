@@ -17,6 +17,7 @@ import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Select, SelectContent, SelectTrigger, SelectValue } from '../ui/select';
 interface CustomProps {
     control: Control<any>;
     name: string;
@@ -26,7 +27,8 @@ interface CustomProps {
     iconSrc?: string
     iconAlt?: string
     showTimeSelect?: boolean
-    renderSkeleton ?:(field: any)=>React.ReactNode
+    renderSkeleton?: (field: any) => React.ReactNode
+    children?: React.ReactNode
 }
 
 const CustomField = ({ field, props }: { field: any; props: CustomProps }) => {
@@ -98,8 +100,23 @@ const CustomField = ({ field, props }: { field: any; props: CustomProps }) => {
                     </FormControl>
                 </div>
             )
-            case FormFieldType.SKELETON:
-                return props.renderSkeleton ? props.renderSkeleton(field): null
+        case FormFieldType.SKELETON:
+            return props.renderSkeleton ? props.renderSkeleton(field) : null
+        case FormFieldType.SELECT:
+            return (
+                <FormControl>
+                    <Select onValueChange={field.onChange} defaultValue={field.value} >
+                        <FormControl>
+                            <SelectTrigger>
+                                <SelectValue placeholder={props.placeholder} />
+                            </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                            {props.children}
+                        </SelectContent>
+                    </Select>
+                </FormControl>
+            )
         default:
             return null
     }

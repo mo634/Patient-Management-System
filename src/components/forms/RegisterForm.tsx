@@ -1,5 +1,4 @@
 "use client"
-
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -7,14 +6,21 @@ import { Form } from "@/components/ui/form"
 import CustomInput from "./CustomInput"
 import SubmitButton from "../SubmitButton"
 import { useState } from "react"
-import { UserFormValidation } from "@/lib/validation"
+import { PatientFormValidation } from "@/lib/validation"
 import { createUser } from "@/lib/actions/patient.action"
 import { useRouter } from "next/navigation"
-
 import { FormFieldType } from "./PatientForm"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Label } from "../ui/label"
-import { genderOptions } from "../../../constans"
+import { Doctors, genderOptions } from "../../../constans"
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+import Image from "next/image"
 
 
 const RegisterForm = () => {
@@ -22,8 +28,8 @@ const RegisterForm = () => {
 
     const router = useRouter()
 
-    const form = useForm<z.infer<typeof UserFormValidation>>({
-        resolver: zodResolver(UserFormValidation),
+    const form = useForm<z.infer<typeof PatientFormValidation>>({
+        resolver: zodResolver(PatientFormValidation),
         defaultValues: {
             name: "",
             email: "",
@@ -31,7 +37,7 @@ const RegisterForm = () => {
         },
     })
 
-    const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
+    const onSubmit = async (values: z.infer<typeof PatientFormValidation>) => {
         console.log(values)
 
     }
@@ -125,6 +131,29 @@ const RegisterForm = () => {
                         </div>
                     </div>
                     {/* end   Birth Date and gender  */}
+
+                    {/* start selection  */}
+
+                    <CustomInput
+                        control={form.control}
+                        fieldType={FormFieldType.SELECT}
+                        name={"primaryPhyisician"}
+                        label="Primary care physician"
+                        placeholder="EX: Dr. John Doe"
+                    >
+                        {
+                            Doctors.map((doctor, i) => (
+                                <SelectItem key={i} value={doctor.name}
+                                >
+                                    <div className=" flex gap-2 items-center">
+                                        <Image src={doctor.image} alt={doctor.name} width={20} height={20} />
+                                        {doctor.name}
+                                    </div>
+                                </SelectItem>
+                            ))
+                        }
+                    </CustomInput>
+                    {/* end selcetion  */}
 
                     <SubmitButton
                         isLoading={isLoading}
