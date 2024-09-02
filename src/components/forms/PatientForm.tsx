@@ -18,7 +18,8 @@ export enum FormFieldType {
     PHONE = "phone",
     DATE_PICKER = "datePicker",
     SKELETON = "skeleton",
-    SELECT = "select"
+    SELECT = "select",
+    TEXTAREA = "textarea"
 }
 const PatientForm = () => {
     const [isLoading, setIsLoading] = useState(false)

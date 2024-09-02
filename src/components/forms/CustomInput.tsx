@@ -18,6 +18,7 @@ import PhoneInput from 'react-phone-number-input'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Select, SelectContent, SelectTrigger, SelectValue } from '../ui/select';
+import { Textarea } from '../ui/textarea';
 interface CustomProps {
     control: Control<any>;
     name: string;
@@ -115,6 +116,16 @@ const CustomField = ({ field, props }: { field: any; props: CustomProps }) => {
                             {props.children}
                         </SelectContent>
                     </Select>
+                </FormControl>
+            )
+        case FormFieldType.TEXTAREA:
+            return (
+                <FormControl>
+                    <Textarea
+                        placeholder={props.placeholder}
+                        {...field}
+                        className='border-0 bg-dark-400  focus-visible:ring-0 focus-visible:ring-offset-0'
+                    />
                 </FormControl>
             )
         default:

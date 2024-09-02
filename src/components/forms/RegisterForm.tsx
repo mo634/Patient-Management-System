@@ -153,8 +153,78 @@ const RegisterForm = () => {
                             ))
                         }
                     </CustomInput>
+
                     {/* end selcetion  */}
 
+                    {/* start insurance section  */}
+                    <div className=" flex gap-4 justify-between max-lg:flex-col">
+                        <div className=" flex-1 max-lg:w-full">
+                            <CustomInput
+                                control={form.control}
+                                fieldType={FormFieldType.INPUT}
+                                name={"insuranceProvider"}
+                                label="insurance Provider"
+                                placeholder="ex: BlueCross"
+                            />
+                        </div>
+                        <div className=" flex-1">
+                            <CustomInput
+                                control={form.control}
+                                fieldType={FormFieldType.INPUT}
+                                name={"insurancePolicyNumber"}
+                                label="Insurance policy number"
+                                placeholder="ex: ABC1234567"
+                            />
+                        </div>
+
+                    </div>
+                    {/* end insurance section  */}
+
+                    {/* start Allergies and  Current medications */}
+                    <div className=" flex gap-4 justify-between max-lg:flex-col">
+                        <div className=" flex-1 max-lg:w-full">
+                            <CustomInput
+                                control={form.control}
+                                fieldType={FormFieldType.TEXTAREA}
+                                name={"allergies"}
+                                label="Allergies (if any )"
+                                placeholder="ex: Peanuts, Penicillin, Pollen"
+                            />
+                        </div>
+                        <div className=" flex-1">
+                            <CustomInput
+                                control={form.control}
+                                fieldType={FormFieldType.TEXTAREA}
+                                name={"currentMedication"}
+                                label="Current medications"
+                                placeholder="ex: Ibuprofen 200mg, Levothyroxine 50mcg"
+                            />
+                        </div>
+                    </div>
+                    {/* end Allergies and  Current medications */}
+
+                    {/*start family  and medical history  */}
+                    <div className=" flex gap-4 justify-between max-lg:flex-col">
+                        <div className=" flex-1 max-lg:w-full">
+                            <CustomInput
+                                control={form.control}
+                                fieldType={FormFieldType.TEXTAREA}
+                                name={"familyMedicalHistory"}
+                                label="Family history"
+                                placeholder="ex: Diabetes, Heart disease"
+                            />
+                        </div>
+                        <div className=" flex-1">
+                            <CustomInput
+                                control={form.control}
+                                fieldType={FormFieldType.TEXTAREA}
+                                name={"pastMedicalHistory"}
+                                label="Medical history"
+                                placeholder="ex: Cancer, Stroke"
+                            />
+                        </div>
+                    </div>
+                    {/* end family  and medical history  */}
                     <SubmitButton
                         isLoading={isLoading}
                     >
